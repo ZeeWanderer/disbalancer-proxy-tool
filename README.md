@@ -21,4 +21,4 @@ A proxy object list:
  - `protocol` - can be [`socks5`, `socks4`, `https`, `http`] or in case of `json` format also a `JSONPATH` expression. Required.
  - `path` - `ip_expr|protocol_expr`, where `ip_expr` and `protocol_expr` are `JSONPATH` expressions. Required for `json` format.
 
-All mentioned `JSONPATH` expression are qequired to describe how to get all instances of required property as a list. For examples see [config.json](/config.json). [Jsonpath.com](https://jsonpath.com/) can be used to verify your expressions work.
+All mentioned `JSONPATH` expression are required to describe how to get all instances of required property as a list. For examples see [config.json](/config.json). [Jsonpath.com](https://jsonpath.com/) can be used to verify your expressions work.

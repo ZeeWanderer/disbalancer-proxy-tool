@@ -5,29 +5,30 @@ import requests
 from jsonpath import JSONPath
 
 protocols_set: set[str] = {"socks5", "socks4", "https", "http"}
+proxies_set: set[str] = set()
 
 class ProxyData(object):
     def __init__(self, data):
+        # define variables for autocomplete
         self.url: str = ""
         self.protocol: str = ""
         self.format: str = ""
-        self.path: str = ""
-        self.__dict__ = data
+        self.path: str = "" # Optional
         
-
-config: dict
-with open("./config.json", "r") as config_f:
-    config = json.load(config_f)
-
-proxy_links: dict[str, list[str]] = config["proxies"]
-protocol_priority = config["protocol_priority"]
-
-proxies_set: set[str] = set()
+        self.__dict__ = data 
 
 def proxy_sort(el: str):
     protocol = el.split("://")[0]
     return protocol_priority[protocol]
 
+# load configuration
+config: dict
+with open("./config.json", "r") as config_f:
+    config = json.load(config_f)
+proxy_links: dict[str, list[str]] = config["proxies"]
+protocol_priority = config["protocol_priority"]
+
+# load proxies
 for object_ in proxy_links:
     proxy_data = ProxyData(object_)
 
@@ -37,9 +38,14 @@ for object_ in proxy_links:
     except requests.exceptions.RequestException as e:
         print(f"Unable to download proxies from {proxy_data.url}, error: {e}.")
         continue
-
+    
+    # handle plaintext format
     if proxy_data.format == "plaintext":
         try:
+            if proxy_data.protocol not in protocols_set:
+                print(f"Unknown protocol {proxy_data.format} for plaintext format, skipping processing.")
+                continue
+
             proxyfile = proxyfile_r.text
             proxylines = [f"{proxy_data.protocol}://{line}" for line in proxyfile.replace("\r\n", "\n").split("\n") if line]
             proxies_set.update(proxylines)
@@ -47,7 +53,7 @@ for object_ in proxy_links:
         except Exception as e:
             print(f"Unable to process proxies from {proxy_data.url}, error: {e}.")
             continue
-
+    # handle json format
     elif proxy_data.format == "json":
         try:
             json_objects = proxyfile_r.json()
@@ -60,17 +66,23 @@ for object_ in proxy_links:
                 protocol_list = [proxy_data.protocol] * len(ip_list)
             else:
                 protocol_list = JSONPath(proxy_data.protocol).parse(json_objects)
-                if len(protocol_list) == 1: # handle APIs that provide protocol type only once per request
+
+                # handle APIs that provide protocol type only once per request
+                if len(protocol_list) != len(ip_list) and len(protocol_list) == 1:
                     protocol_list = protocol_list * len(ip_list)
 
             proxylines = [f"{protocol}://{ip}:{port}" for protocol, ip, port in zip(protocol_list, ip_list, port_list)]
-            
             proxies_set.update(proxylines)
             print(f"Downloaded {len(proxylines)} proxies.")
         except Exception as e:
             print(f"Unable to process proxies from {proxy_data.url}, error: {e}.")
             continue
+    # handle unknown formats
+    else:
+        print(f"Unknown format {proxy_data.format}, skipping processing.")
+        continue
 
+# tally and dump proxies to file
 if len(proxies_set) != 0:
     print(f"Finished downloading proxies.\nUnique proxies:")
     proxies_list: list[str] = list(proxies_set)
