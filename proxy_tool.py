@@ -15,7 +15,7 @@ class ProxyData(object):
         self.format: str = ""
         self.path: str = "" # Optional
         
-        self.__dict__ = data 
+        self.__dict__.update(data) 
 
 def proxy_sort(el: str):
     protocol = el.split("://")[0]
@@ -25,8 +25,8 @@ def proxy_sort(el: str):
 config: dict
 with open("./config.json", "r") as config_f:
     config = json.load(config_f)
-proxy_links: dict[str, list[str]] = config["proxies"]
-protocol_priority = config["protocol_priority"]
+proxy_links: list[dict[str, str]] = config["proxies"]
+protocol_priority: dict[str, int] = config["protocol_priority"]
 
 # load proxies
 for object_ in proxy_links:
@@ -37,6 +37,9 @@ for object_ in proxy_links:
         proxyfile_r = requests.get(proxy_data.url)
         if not proxyfile_r.ok:
             print(f"Unable to download proxies from {proxy_data.url}, error_code: {proxyfile_r.status_code}.")
+            continue
+        elif "<body" in proxyfile_r.text:
+            print(f"Returned html page, likely an error.")
             continue
     except requests.exceptions.RequestException as e:
         print(f"Unable to download proxies from {proxy_data.url}, error: {e}.")

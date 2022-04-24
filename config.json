@@ -47,6 +47,11 @@
             "format": "plaintext"
         },
         {
+            "url": "https://api.good-proxies.ru/getfree.php?type%5Bsocks5%5D=on&count=100&ping=8000&time=600&works=50&filetype=txt&key=freeproxy",
+            "protocol": "socks5",
+            "format": "plaintext"
+        },
+        {
             "url": "https://raw.githubusercontent.com/ShiftyTR/Proxy-List/master/socks4.txt",
             "protocol": "socks4",
             "format": "plaintext"
@@ -78,6 +83,11 @@
         },
         {
             "url": "https://gimmeproxy.com/api/getProxy?ipPort=true&protocol=socks4",
+            "protocol": "socks4",
+            "format": "plaintext"
+        },
+        {
+            "url": "https://api.good-proxies.ru/getfree.php?type%5Bsocks4%5D=on&count=100&ping=8000&time=600&works=50&filetype=txt&key=freeproxy",
             "protocol": "socks4",
             "format": "plaintext"
         },
@@ -117,6 +127,11 @@
             "format": "plaintext"
         },
         {
+            "url": "https://api.good-proxies.ru/getfree.php?access%5B%27supportsHttps%27%5D=on&count=100&ping=8000&time=600&works=50&filetype=txt&key=freeproxy",
+            "protocol": "https",
+            "format": "plaintext"
+        },
+        {
             "url": "https://raw.githubusercontent.com/ShiftyTR/Proxy-List/master/http.txt",
             "protocol": "http",
             "format": "plaintext"
@@ -143,6 +158,11 @@
         },
         {
             "url": "https://raw.githubusercontent.com/clarketm/proxy-list/master/proxy-list-raw.txt",
+            "protocol": "http",
+            "format": "plaintext"
+        },
+        {
+            "url": "https://api.good-proxies.ru/getfree.php?type%5Bhttp%5D=on&count=100&ping=8000&time=600&works=50&filetype=txt&key=freeproxy",
             "protocol": "http",
             "format": "plaintext"
         }

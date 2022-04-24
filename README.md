@@ -1,5 +1,5 @@
 # proxy tool
-A simple tool to download proxies from various sources into a file. Made for use with disbalancer.
+A simple tool to download proxies from various sources into a file. Made for use with [disbalancer](https://disbalancer.com/).
 
 ## Installation
  - Dearchive or clone into disbalancer folder
