@@ -27,7 +27,7 @@
             "format": "plaintext"
         },
         {
-            "url": "https://advanced.name/freeproxy/62644c2444745?type=socks5",
+            "url": "https://advanced.name/freeproxy/62659feb0403b?type=socks5",
             "protocol": "socks5",
             "format": "plaintext"
         },
@@ -38,6 +38,11 @@
         },
         {
             "url": "https://www.proxyscan.io/download?type=socks5",
+            "protocol": "socks5",
+            "format": "plaintext"
+        },
+        {
+            "url": "https://gimmeproxy.com/api/getProxy?ipPort=true&protocol=socks5",
             "protocol": "socks5",
             "format": "plaintext"
         },
@@ -57,7 +62,7 @@
             "format": "plaintext"
         },
         {
-            "url": "https://advanced.name/freeproxy/62644c2444745?type=socks4",
+            "url": "https://advanced.name/freeproxy/62659feb0403b?type=socks4",
             "protocol": "socks4",
             "format": "plaintext"
         },
@@ -92,7 +97,7 @@
             "format": "plaintext"
         },
         {
-            "url": "https://advanced.name/freeproxy/62644c2444745?type=https",
+            "url": "https://advanced.name/freeproxy/62659feb0403b?type=https",
             "protocol": "https",
             "format": "plaintext"
         },
@@ -122,7 +127,7 @@
             "format": "plaintext"
         },
         {
-            "url": "https://advanced.name/freeproxy/62644c2444745?type=http",
+            "url": "https://advanced.name/freeproxy/62659feb0403b?type=http",
             "protocol": "http",
             "format": "plaintext"
         },
@@ -133,6 +138,11 @@
         },
         {
             "url": "https://www.proxyscan.io/download?type=http",
+            "protocol": "http",
+            "format": "plaintext"
+        },
+        {
+            "url": "https://raw.githubusercontent.com/clarketm/proxy-list/master/proxy-list-raw.txt",
             "protocol": "http",
             "format": "plaintext"
         }
