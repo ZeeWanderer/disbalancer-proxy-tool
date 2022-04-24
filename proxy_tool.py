@@ -55,10 +55,13 @@ for object_ in proxy_links:
             ip_path, port_path = proxy_data.path.split("|")
             ip_list = JSONPath(ip_path).parse(json_objects)
             port_list = JSONPath(port_path).parse(json_objects)
+
             if proxy_data.protocol in protocols_set:
                 protocol_list = [proxy_data.protocol] * len(ip_list)
             else:
                 protocol_list = JSONPath(proxy_data.protocol).parse(json_objects)
+                if len(protocol_list) == 1: # handle APIs that provide protocol type only once per request
+                    protocol_list = protocol_list * len(ip_list)
 
             proxylines = [f"{protocol}://{ip}:{port}" for protocol, ip, port in zip(protocol_list, ip_list, port_list)]
             
