@@ -67,7 +67,6 @@ for object_ in proxy_links:
         except Exception as e:
             print(f"Unable to process proxies from {proxy_data.url}, error: {e}.")
             continue
-        
 
 if len(proxies_set) != 0:
     print(f"Finished downloading proxies.\nUnique proxies:")
