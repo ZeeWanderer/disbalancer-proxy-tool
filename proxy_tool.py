@@ -35,6 +35,9 @@ for object_ in proxy_links:
     try:
         print(f"Downloading proxies from {proxy_data.url}...")
         proxyfile_r = requests.get(proxy_data.url)
+        if not proxyfile_r.ok:
+            print(f"Unable to download proxies from {proxy_data.url}, error_code: {proxyfile_r.status_code}.")
+            continue
     except requests.exceptions.RequestException as e:
         print(f"Unable to download proxies from {proxy_data.url}, error: {e}.")
         continue
@@ -62,6 +65,7 @@ for object_ in proxy_links:
             ip_list = JSONPath(ip_path).parse(json_objects)
             port_list = JSONPath(port_path).parse(json_objects)
 
+            protocol_list: list[str]
             if proxy_data.protocol in protocols_set:
                 protocol_list = [proxy_data.protocol] * len(ip_list)
             else:
