@@ -1,0 +1,146 @@
+{
+    "proxies": [
+        {
+            "url": "https://proxylist.geonode.com/api/proxy-list?limit=2000",
+            "protocol": "$.data[::].protocols[0]",
+            "format": "json",
+            "path": "$.data[::].ip|$.data[::].port"
+        },
+        {
+            "url": "https://raw.githubusercontent.com/ShiftyTR/Proxy-List/master/socks5.txt",
+            "protocol": "socks5",
+            "format": "plaintext"
+        },
+        {
+            "url": "https://raw.githubusercontent.com/TheSpeedX/PROXY-List/master/socks5.txt",
+            "protocol": "socks5",
+            "format": "plaintext"
+        },
+        {
+            "url": "https://raw.githubusercontent.com/hookzof/socks5_list/master/proxy.txt",
+            "protocol": "socks5",
+            "format": "plaintext"
+        },
+        {
+            "url": "https://api.proxyscrape.com/v2/?request=getproxies&protocol=socks5&timeout=10000&country=all&simplified=true",
+            "protocol": "socks5",
+            "format": "plaintext"
+        },
+        {
+            "url": "https://advanced.name/freeproxy/62644c2444745?type=socks5",
+            "protocol": "socks5",
+            "format": "plaintext"
+        },
+        {
+            "url": "https://www.proxy-list.download/api/v1/get?type=socks5",
+            "protocol": "socks5",
+            "format": "plaintext"
+        },
+        {
+            "url": "https://www.proxyscan.io/download?type=socks5",
+            "protocol": "socks5",
+            "format": "plaintext"
+        },
+        {
+            "url": "https://raw.githubusercontent.com/ShiftyTR/Proxy-List/master/socks4.txt",
+            "protocol": "socks4",
+            "format": "plaintext"
+        },
+        {
+            "url": "https://raw.githubusercontent.com/TheSpeedX/PROXY-List/master/socks4.txt",
+            "protocol": "socks4",
+            "format": "plaintext"
+        },
+        {
+            "url": "https://api.proxyscrape.com/v2/?request=getproxies&protocol=socks4&timeout=10000&country=all&simplified=true",
+            "protocol": "socks4",
+            "format": "plaintext"
+        },
+        {
+            "url": "https://advanced.name/freeproxy/62644c2444745?type=socks4",
+            "protocol": "socks4",
+            "format": "plaintext"
+        },
+        {
+            "url": "https://www.proxy-list.download/api/v1/get?type=socks4",
+            "protocol": "socks4",
+            "format": "plaintext"
+        },
+        {
+            "url": "https://www.proxyscan.io/download?type=socks4",
+            "protocol": "socks4",
+            "format": "plaintext"
+        },
+        {
+            "url": "https://gimmeproxy.com/api/getProxy?ipPort=true&protocol=socks4",
+            "protocol": "socks4",
+            "format": "plaintext"
+        },
+        {
+            "url": "https://raw.githubusercontent.com/ShiftyTR/Proxy-List/master/https.txt",
+            "protocol": "https",
+            "format": "plaintext"
+        },
+        {
+            "url": "https://raw.githubusercontent.com/TheSpeedX/PROXY-List/master/http.txt",
+            "protocol": "https",
+            "format": "plaintext"
+        },
+        {
+            "url": "https://api.proxyscrape.com/v2/?request=getproxies&protocol=http&timeout=10000&country=all&ssl=yes&anonymity=all&simplified=true",
+            "protocol": "https",
+            "format": "plaintext"
+        },
+        {
+            "url": "https://advanced.name/freeproxy/62644c2444745?type=https",
+            "protocol": "https",
+            "format": "plaintext"
+        },
+        {
+            "url": "https://www.proxy-list.download/api/v1/get?type=https",
+            "protocol": "https",
+            "format": "plaintext"
+        },
+        {
+            "url": "https://www.proxyscan.io/download?type=https",
+            "protocol": "https",
+            "format": "plaintext"
+        },
+        {
+            "url": "https://gimmeproxy.com/api/getProxy?ipPort=true&protocol=http",
+            "protocol": "https",
+            "format": "plaintext"
+        },
+        {
+            "url": "https://raw.githubusercontent.com/ShiftyTR/Proxy-List/master/http.txt",
+            "protocol": "http",
+            "format": "plaintext"
+        },
+        {
+            "url": "https://api.proxyscrape.com/v2/?request=getproxies&protocol=http&timeout=10000&country=all&ssl=no&anonymity=all&simplified=true",
+            "protocol": "http",
+            "format": "plaintext"
+        },
+        {
+            "url": "https://advanced.name/freeproxy/62644c2444745?type=http",
+            "protocol": "http",
+            "format": "plaintext"
+        },
+        {
+            "url": "https://www.proxy-list.download/api/v1/get?type=http",
+            "protocol": "http",
+            "format": "plaintext"
+        },
+        {
+            "url": "https://www.proxyscan.io/download?type=http",
+            "protocol": "http",
+            "format": "plaintext"
+        }
+    ],
+    "protocol_priority": {
+        "socks5": 0,
+        "socks4": 1,
+        "https": 2,
+        "http": 3
+    }
+}

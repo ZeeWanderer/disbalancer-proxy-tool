@@ -1,0 +1,2 @@
+jsonpath_python
+requests
