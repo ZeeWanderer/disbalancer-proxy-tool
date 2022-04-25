@@ -6,14 +6,6 @@ import requests
 from jsonpath import JSONPath
 from requests import Response
 
-# globals
-
-protocols_set: set[str] = {"socks5", "socks4", "https", "http"}
-proxies_set: set[str] = set()
-
-proxy_links: list[dict[str, str]]
-protocol_priority: dict[str, int]
-
 
 class ProxyData(object):
     def __init__(self, data):
@@ -26,25 +18,31 @@ class ProxyData(object):
         self.__dict__.update(data)
 
 
+# globals
+protocols_set: set[str] = {"socks5", "socks4", "https", "http"}
+proxies_set: set[str] = set()
+
+proxy_data_list: list[ProxyData]
+protocol_priority: dict[str, int]
+
+
 def proxy_sort(el: str):
     protocol = el.split("://")[0]
     return protocol_priority[protocol]
 
 
 def main():
-    global proxy_links, protocol_priority
+    global proxy_data_list, protocol_priority
 
     # load configuration
-    config: dict
+    config: dict[str, list[ProxyData] | dict[str, int]]
     with open("./config.json", "r") as config_f:
         config = json.load(config_f)
-    proxy_links = config["proxies"]
+    proxy_data_list = list(map(lambda x: ProxyData(x), config["proxies"]))
     protocol_priority = config["protocol_priority"]
 
     # load proxies
-    for object_ in proxy_links:
-        proxy_data = ProxyData(object_)
-
+    for proxy_data in proxy_data_list:
         try:
             print(f"Downloading proxies from {proxy_data.url}...")
             proxyfile_r: Response = requests.get(proxy_data.url)
