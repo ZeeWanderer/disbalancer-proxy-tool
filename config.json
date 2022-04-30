@@ -52,6 +52,11 @@
             "format": "plaintext"
         },
         {
+            "url": "https://raw.githubusercontent.com/monosans/proxy-list/main/proxies/socks5.txt",
+            "protocol": "socks5",
+            "format": "plaintext"
+        },
+        {
             "url": "https://raw.githubusercontent.com/ShiftyTR/Proxy-List/master/socks4.txt",
             "protocol": "socks4",
             "format": "plaintext"
@@ -88,6 +93,11 @@
         },
         {
             "url": "https://api.good-proxies.ru/getfree.php?type%5Bsocks4%5D=on&count=100&ping=8000&time=600&works=50&filetype=txt&key=freeproxy",
+            "protocol": "socks4",
+            "format": "plaintext"
+        },
+        {
+            "url": "https://raw.githubusercontent.com/monosans/proxy-list/main/proxies/socks4.txt",
             "protocol": "socks4",
             "format": "plaintext"
         },
@@ -163,6 +173,11 @@
         },
         {
             "url": "https://api.good-proxies.ru/getfree.php?type%5Bhttp%5D=on&count=100&ping=8000&time=600&works=50&filetype=txt&key=freeproxy",
+            "protocol": "http",
+            "format": "plaintext"
+        },
+        {
+            "url": "https://raw.githubusercontent.com/monosans/proxy-list/main/proxies/http.txt",
             "protocol": "http",
             "format": "plaintext"
         }
