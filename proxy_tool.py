@@ -106,7 +106,7 @@ def main():
     if len(proxies_set) != 0:
         print(f"Finished downloading proxies.\nUnique proxies:")
         proxies_list: list[str] = list(proxies_set)
-        for protocol in protocols_set:
+        for protocol in sorted(list(protocols_set), key=lambda x: protocol_priority[x]):
             res = sum(map(lambda i: i.startswith(protocol), proxies_list))
             print(f"\t{protocol.upper()}: {res}")
 
